@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@miguelpilapil - dev stuff</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        
+        body{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            background-image: url('images/BG.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+        }
+        
+        body::before{
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: -1;
+        }
+        
+        .header{margin-bottom: 60px;}
+        .header h1{font-size: 24px;font-weight: 600;margin-bottom: 10px;}
+        .header p{color: #ccc;font-size: 16px;}
+        
+        .project-list{list-style: none;}
+        .project-item{margin-bottom: 40px;padding-bottom: 20px;border-bottom: 1px solid rgba(255, 255, 255, 0.2);}
+        .project-item:last-child{border-bottom: none;}
+        
+        .project-date{color: #aaa;font-size: 14px;margin-bottom: 8px;}
+        .project-title{font-size: 18px;font-weight: 500;margin-bottom: 8px;}
+        .project-title a{color: #fff;text-decoration: none;}
+        .project-title a:hover{color: #66ccff;}
+        .project-description{color: #ccc;font-size: 15px;margin-bottom: 10px;}
+        
+        .project-tech{display: flex;flex-wrap: wrap;gap: 8px;}
+        .tech-tag{background: rgba(255, 255, 255, 0.2);color: #fff;padding: 2px 8px;border-radius: 12px;font-size: 12px;font-weight: 500;}
+        
+        .status{color: #66ccff;font-size: 13px;margin-bottom: 5px;font-style: italic;}
+        .joke{color: #999;font-size: 13px;margin-top: 5px;font-style: italic;}
+        
+        .contact{margin-top: 60px;padding-top: 40px;border-top: 1px solid rgba(255, 255, 255, 0.2);}
+        .contact h2{font-size: 18px;font-weight: 500;margin-bottom: 20px;}
+        .contact-links{display: flex;flex-direction: column;gap: 8px;}
+        .contact-links a{color: #66ccff;text-decoration: none;font-size: 15px;}
+        .contact-links a:hover{text-decoration: underline;}
+        
+        @media (max-width: 480px) {
+            body{padding: 20px 15px;}
+            .header{margin-bottom: 40px;}
+            .project-item{margin-bottom: 30px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>@miguelpilapil</h1>
+            <p>full-stack dev who codes until 3am and survives on coffee ☕</p>
+        </header>
+
+        <main>
+            <ul class="project-list">
+                <li class="project-item">
+                    <div class="project-date">march 19, 2026</div>
+                    <div class="status">🚧 currently adding payment gateway (pray for me)</div>
+                    <h3 class="project-title">
+                        <a href="https://github.com/sainttlaurel/RAVI-WEBSITE" target="_blank">RAVI Modular Cabinet Booking System</a>
+                    </h3>
+                    <p class="project-description">booking system with firebase. admin dashboard included because clients always want to "see the data"</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">CSS3</span>
+                    </div>
+                    <div class="joke">// TODO: fix that weird bug that only happens on tuesdays</div>
+                </li>
+
+                <li class="project-item">
+                    <div class="project-date">march 15, 2026</div>
+                    <div class="status">✅ done (finally!)</div>
+                    <h3 class="project-title">
+                        <a href="https://github.com/miguelpilapil/AI-POWERED-INVENTORY" target="_blank">AI-Powered Inventory Management System</a>
+                    </h3>
+                    <p class="project-description">inventory system with "AI" (it's just fancy math but sounds cooler). has a chatbot that probably knows more about your stock than you do</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Bootstrap</span>
+                        <span class="tech-tag">AI Chatbot</span>
+                    </div>
+                    <div class="joke">the AI sometimes gives existential advice instead of inventory data 🤖</div>
+                </li>
+
+                <li class="project-item">
+                    <div class="project-date">march 10, 2026</div>
+                    <div class="status">🔄 adding more car pics (client wants "more red cars")</div>
+                    <h3 class="project-title">
+                        <a href="https://rm-garage-murex.vercel.app/" target="_blank">RM Garage Website</a>
+                    </h3>
+                    <p class="project-description">car dealership site. dark theme because "it looks more professional" (client's words, not mine)</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Responsive</span>
+                    </div>
+                    <div class="joke">spent 3 hours making the car slideshow smooth. worth it? probably not</div>
+                </li>
+
+                <li class="project-item">
+                    <div class="project-date">march 5, 2026</div>
+                    <div class="status">🎮 works but don't ask me to add more features</div>
+                    <h3 class="project-title">
+                        <a href="https://win-portfolo-dev.vercel.app/" target="_blank">Windows Portfolio (Interactive Desktop)</a>
+                    </h3>
+                    <p class="project-description">windows desktop in browser because why not? has draggable windows and everything. my mom thinks it's "very clever"</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">SVG</span>
+                    </div>
+                    <div class="joke">yes, the start button actually works. no, i won't add solitaire</div>
+                </li>
+
+                <li class="project-item">
+                    <div class="project-date">february 28, 2026</div>
+                    <div class="status">🔐 secure af (i hope)</div>
+                    <h3 class="project-title">
+                        <a href="https://github.com/sainttlaurel/OBS" target="_blank">OBI Banking System</a>
+                    </h3>
+                    <p class="project-description">banking app with all the security stuff. tested it with my own fake money (spoiler: it worked)</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="joke">password requirements: must contain 1 uppercase, 1 number, 1 symbol, and your firstborn's name</div>
+                </li>
+            </ul>
+
+            <section class="contact">
+                <h2>hit me up</h2>
+                <div class="contact-links">
+                    <a href="mailto:miguelpilapil30@gmail.com">miguelpilapil30@gmail.com</a>
+                    <a href="https://github.com/miguelpilapil" target="_blank">github (where my code lives)</a>
+                    <a href="https://linkedin.com/in/miguelpilapil" target="_blank">linkedin (professional me)</a>
+                </div>
+                <div class="joke" style="margin-top: 20px;">currently accepting projects that don't require me to learn a new framework 😅</div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
