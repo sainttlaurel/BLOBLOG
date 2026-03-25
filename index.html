@@ -52,7 +52,7 @@
         .tech-tag{background: rgba(255, 255, 255, 0.2);color: #fff;padding: 2px 8px;border-radius: 12px;font-size: 12px;font-weight: 500;}
         
         .project-screenshot{margin: 15px 0;border-radius: 8px;overflow: hidden;border: 1px solid rgba(255, 255, 255, 0.2);position: relative;}
-        .project-screenshot img{width: 100%;height: auto;display: block;transition: transform 0.3s ease;}
+        .project-screenshot img{width: 100%;height: auto;display: block;transition: transform 0.3s ease;cursor: pointer;}
         .project-screenshot:hover img{transform: scale(1.02);}
         
         .carousel{position: relative;margin: 15px 0;}
@@ -231,7 +231,7 @@
                     </h3>
                     <p class="project-description">windows desktop in browser because why not? has draggable windows and everything. my friend thinks it's "very clever"</p>
                     <div class="project-screenshot">
-                        <img src="images/WINDOWS PORTFOLIO.png" alt="Windows Portfolio Screenshot">
+                        <img src="images/WINDOWS PORTFOLIO.png" alt="Windows Portfolio Screenshot" onclick="openSingleFullscreen(this.src)">
                     </div>
                     <div class="project-tech">
                         <span class="tech-tag">HTML5</span>
@@ -326,6 +326,9 @@
             document.getElementById('fullscreenModal').classList.add('active');
             document.body.style.overflow = 'hidden';
             
+            // Show navigation arrows for carousel
+            document.querySelectorAll('.fullscreen-nav').forEach(btn => btn.style.display = 'block');
+            
             stopAutoSlide(carouselName);
         }
 
@@ -343,11 +346,24 @@
             document.getElementById('fullscreenImage').src = fullscreenData.images[fullscreenData.currentIndex];
         }
 
+        function openSingleFullscreen(imageSrc) {
+            fullscreenData.carouselName = '';
+            fullscreenData.images = [imageSrc];
+            fullscreenData.currentIndex = 0;
+            
+            document.getElementById('fullscreenImage').src = imageSrc;
+            document.getElementById('fullscreenModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Hide navigation arrows for single image
+            document.querySelectorAll('.fullscreen-nav').forEach(btn => btn.style.display = 'none');
+        }
+
         // Close fullscreen on ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeFullscreen();
-            if (e.key === 'ArrowLeft') navigateFullscreen(-1);
-            if (e.key === 'ArrowRight') navigateFullscreen(1);
+            if (e.key === 'ArrowLeft' && fullscreenData.images.length > 1) navigateFullscreen(-1);
+            if (e.key === 'ArrowRight' && fullscreenData.images.length > 1) navigateFullscreen(1);
         });
 
         // Close fullscreen on background click
