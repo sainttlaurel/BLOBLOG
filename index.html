@@ -51,6 +51,37 @@
         .project-tech{display: flex;flex-wrap: wrap;gap: 8px;}
         .tech-tag{background: rgba(255, 255, 255, 0.2);color: #fff;padding: 2px 8px;border-radius: 12px;font-size: 12px;font-weight: 500;}
         
+        .project-screenshot{margin: 15px 0;border-radius: 8px;overflow: hidden;border: 1px solid rgba(255, 255, 255, 0.2);position: relative;}
+        .project-screenshot img{width: 100%;height: auto;display: block;transition: transform 0.3s ease;}
+        .project-screenshot:hover img{transform: scale(1.02);}
+        
+        .carousel{position: relative;margin: 15px 0;}
+        .carousel-container{position: relative;border-radius: 8px;overflow: hidden;border: 1px solid rgba(255, 255, 255, 0.2);background: #000;aspect-ratio: 16/9;}
+        .carousel-slides{display: flex;transition: transform 0.5s ease;height: 100%;}
+        .carousel-slide{min-width: 100%;flex-shrink: 0;display: flex;align-items: center;justify-content: center;height: 100%;}
+        .carousel-slide img{width: 100%;height: 100%;display: block;object-fit: contain;}
+        
+        .carousel-btn{position: absolute;top: 50%;transform: translateY(-50%);background: rgba(0, 0, 0, 0.6);color: #fff;border: none;padding: 12px 16px;cursor: pointer;font-size: 18px;border-radius: 4px;transition: background 0.3s ease;z-index: 10;}
+        .carousel-btn:hover{background: rgba(0, 0, 0, 0.8);}
+        .carousel-btn.prev{left: 10px;}
+        .carousel-btn.next{right: 10px;}
+        
+        .carousel-dots{display: flex;justify-content: center;gap: 8px;margin-top: 10px;}
+        .carousel-dot{width: 8px;height: 8px;border-radius: 50%;background: rgba(255, 255, 255, 0.3);cursor: pointer;transition: background 0.3s ease;}
+        .carousel-dot.active{background: #66ccff;}
+        
+        .carousel-slide img{cursor: pointer;}
+        
+        .fullscreen-modal{display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.95);z-index: 9999;justify-content: center;align-items: center;}
+        .fullscreen-modal.active{display: flex;}
+        .fullscreen-modal img{max-width: 90%;max-height: 90%;object-fit: contain;}
+        .fullscreen-close{position: absolute;top: 20px;right: 30px;color: #fff;font-size: 40px;font-weight: bold;cursor: pointer;background: none;border: none;transition: color 0.3s ease;}
+        .fullscreen-close:hover{color: #66ccff;}
+        .fullscreen-nav{position: absolute;top: 50%;transform: translateY(-50%);background: rgba(0, 0, 0, 0.6);color: #fff;border: none;padding: 20px 24px;cursor: pointer;font-size: 24px;border-radius: 4px;transition: background 0.3s ease;}
+        .fullscreen-nav:hover{background: rgba(0, 0, 0, 0.8);}
+        .fullscreen-nav.prev{left: 20px;}
+        .fullscreen-nav.next{right: 20px;}
+        
         .status{color: #66ccff;font-size: 13px;margin-bottom: 5px;font-style: italic;}
         .joke{color: #999;font-size: 13px;margin-top: 5px;font-style: italic;}
         
@@ -100,6 +131,24 @@
                         <a href="https://github.com/sainttlaurel/AI-POWERED-INVENTORY" target="_blank">AI-Powered Inventory Management System</a>
                     </h3>
                     <p class="project-description">inventory system with "AI" (it's just fancy math but sounds cooler). has a chatbot that probably knows more about your stock than you do</p>
+                    <div class="carousel" data-carousel="inventory">
+                        <div class="carousel-container">
+                            <div class="carousel-slides">
+                                <div class="carousel-slide"><img src="images/aipoweredinventory/dashboard.png" alt="AI Inventory Dashboard"></div>
+                                <div class="carousel-slide"><img src="images/aipoweredinventory/products.png" alt="Products Page"></div>
+                                <div class="carousel-slide"><img src="images/aipoweredinventory/inventory.png" alt="Inventory Management"></div>
+                                <div class="carousel-slide"><img src="images/aipoweredinventory/aiforecast.png" alt="AI Forecast"></div>
+                                <div class="carousel-slide"><img src="images/aipoweredinventory/reports.png" alt="Reports"></div>
+                                <div class="carousel-slide"><img src="images/aipoweredinventory/categories.png" alt="Categories"></div>
+                                <div class="carousel-slide"><img src="images/aipoweredinventory/invoices.png" alt="Invoices"></div>
+                                <div class="carousel-slide"><img src="images/aipoweredinventory/notifications.png" alt="Notifications"></div>
+                                <div class="carousel-slide"><img src="images/aipoweredinventory/adminpage.png" alt="Admin Page"></div>
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveCarousel('inventory', -1)">‹</button>
+                            <button class="carousel-btn next" onclick="moveCarousel('inventory', 1)">›</button>
+                        </div>
+                        <div class="carousel-dots" id="dots-inventory"></div>
+                    </div>
                     <div class="project-tech">
                         <span class="tech-tag">PHP</span>
                         <span class="tech-tag">MySQL</span>
@@ -116,6 +165,24 @@
                         <a href="https://github.com/sainttlaurel/RAVI-WEBSITE" target="_blank">RAVI Modular Cabinet Booking System</a>
                     </h3>
                     <p class="project-description">booking system with firebase. admin dashboard included because clients always want to "see the data"</p>
+                    <div class="carousel" data-carousel="ravi">
+                        <div class="carousel-container">
+                            <div class="carousel-slides">
+                                <div class="carousel-slide"><img src="images/ravi/dashboard.png" alt="RAVI Dashboard"></div>
+                                <div class="carousel-slide"><img src="images/ravi/booknow.png" alt="Book Now"></div>
+                                <div class="carousel-slide"><img src="images/ravi/gallery.png" alt="Gallery"></div>
+                                <div class="carousel-slide"><img src="images/ravi/about1.png" alt="About Page 1"></div>
+                                <div class="carousel-slide"><img src="images/ravi/about2.png" alt="About Page 2"></div>
+                                <div class="carousel-slide"><img src="images/ravi/about3.png" alt="About Page 3"></div>
+                                <div class="carousel-slide"><img src="images/ravi/contactus.png" alt="Contact Us"></div>
+                                <div class="carousel-slide"><img src="images/ravi/login.png" alt="Login"></div>
+                                <div class="carousel-slide"><img src="images/ravi/adminpage.png" alt="Admin Page"></div>
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveCarousel('ravi', -1)">‹</button>
+                            <button class="carousel-btn next" onclick="moveCarousel('ravi', 1)">›</button>
+                        </div>
+                        <div class="carousel-dots" id="dots-ravi"></div>
+                    </div>
                     <div class="project-tech">
                         <span class="tech-tag">PHP</span>
                         <span class="tech-tag">Firebase</span>
@@ -129,9 +196,24 @@
                     <div class="project-date">march 10, 2026</div>
                     <div class="status">🔄 adding more car pics (client wants "more red cars")</div>
                     <h3 class="project-title">
-                        <a href="https://rm-garage-murex.vercel.app/" target="_blank">RM Garage Website</a>
+                        <a href="https://rm-garage-murex.vercel.app/" target="_blank">RM Garage</a>
                     </h3>
                     <p class="project-description">car dealership site. dark theme because "it looks more professional" (client's words, not mine)</p>
+                    <div class="carousel" data-carousel="rmgarage">
+                        <div class="carousel-container">
+                            <div class="carousel-slides">
+                                <div class="carousel-slide"><img src="images/rmgarage/loading.png" alt="Loading Screen"></div>
+                                <div class="carousel-slide"><img src="images/rmgarage/dashboardblack.png" alt="Dashboard Dark"></div>
+                                <div class="carousel-slide"><img src="images/rmgarage/dashboardwhite.png" alt="Dashboard Light"></div>
+                                <div class="carousel-slide"><img src="images/rmgarage/fleet.png" alt="Fleet"></div>
+                                <div class="carousel-slide"><img src="images/rmgarage/reviews.png" alt="Reviews"></div>
+                                <div class="carousel-slide"><img src="images/rmgarage/contactus.png" alt="Contact Us"></div>
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveCarousel('rmgarage', -1)">‹</button>
+                            <button class="carousel-btn next" onclick="moveCarousel('rmgarage', 1)">›</button>
+                        </div>
+                        <div class="carousel-dots" id="dots-rmgarage"></div>
+                    </div>
                     <div class="project-tech">
                         <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
@@ -148,6 +230,9 @@
                         <a href="https://win-portfolo-dev.vercel.app/" target="_blank">Windows Portfolio (Interactive Desktop)</a>
                     </h3>
                     <p class="project-description">windows desktop in browser because why not? has draggable windows and everything. my friend thinks it's "very clever"</p>
+                    <div class="project-screenshot">
+                        <img src="images/WINDOWS PORTFOLIO.png" alt="Windows Portfolio Screenshot">
+                    </div>
                     <div class="project-tech">
                         <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
@@ -164,6 +249,19 @@
                         <a href="https://github.com/sainttlaurel/OBS" target="_blank">OBI Banking System</a>
                     </h3>
                     <p class="project-description">banking app with all the security stuff. tested it with my own fake money (spoiler: it worked)</p>
+                    <div class="carousel" data-carousel="obs">
+                        <div class="carousel-container">
+                            <div class="carousel-slides">
+                                <div class="carousel-slide"><img src="images/obs/login.png" alt="Login Page"></div>
+                                <div class="carousel-slide"><img src="images/obs/dashboard.png" alt="Dashboard"></div>
+                                <div class="carousel-slide"><img src="images/obs/transfermoney.png" alt="Transfer Money"></div>
+                                <div class="carousel-slide"><img src="images/obs/transferhistory.png" alt="Transfer History"></div>
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveCarousel('obs', -1)">‹</button>
+                            <button class="carousel-btn next" onclick="moveCarousel('obs', 1)">›</button>
+                        </div>
+                        <div class="carousel-dots" id="dots-obs"></div>
+                    </div>
                     <div class="project-tech">
                         <span class="tech-tag">PHP</span>
                         <span class="tech-tag">MySQL</span>
@@ -185,5 +283,126 @@
             </section>
         </main>
     </div>
+
+    <div class="fullscreen-modal" id="fullscreenModal">
+        <button class="fullscreen-close" onclick="closeFullscreen()">&times;</button>
+        <button class="fullscreen-nav prev" onclick="navigateFullscreen(-1)">‹</button>
+        <img id="fullscreenImage" src="" alt="Fullscreen preview">
+        <button class="fullscreen-nav next" onclick="navigateFullscreen(1)">›</button>
+    </div>
+
+    <script>
+        const carousels = {};
+        let fullscreenData = { carouselName: '', images: [], currentIndex: 0 };
+
+        function initCarousel(name, slideCount) {
+            carousels[name] = { currentSlide: 0, totalSlides: slideCount, interval: null };
+            
+            const dotsContainer = document.getElementById(`dots-${name}`);
+            for (let i = 0; i < slideCount; i++) {
+                const dot = document.createElement('div');
+                dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(name, i);
+                dotsContainer.appendChild(dot);
+            }
+            
+            // Add click event to images for fullscreen
+            const slides = document.querySelectorAll(`[data-carousel="${name}"] .carousel-slide img`);
+            slides.forEach((img, index) => {
+                img.onclick = () => openFullscreen(name, index);
+            });
+            
+            // Start auto-slide
+            startAutoSlide(name);
+        }
+
+        function openFullscreen(carouselName, imageIndex) {
+            const slides = document.querySelectorAll(`[data-carousel="${carouselName}"] .carousel-slide img`);
+            fullscreenData.carouselName = carouselName;
+            fullscreenData.images = Array.from(slides).map(img => img.src);
+            fullscreenData.currentIndex = imageIndex;
+            
+            document.getElementById('fullscreenImage').src = fullscreenData.images[imageIndex];
+            document.getElementById('fullscreenModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            stopAutoSlide(carouselName);
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            if (fullscreenData.carouselName) {
+                startAutoSlide(fullscreenData.carouselName);
+            }
+        }
+
+        function navigateFullscreen(direction) {
+            fullscreenData.currentIndex = (fullscreenData.currentIndex + direction + fullscreenData.images.length) % fullscreenData.images.length;
+            document.getElementById('fullscreenImage').src = fullscreenData.images[fullscreenData.currentIndex];
+        }
+
+        // Close fullscreen on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeFullscreen();
+            if (e.key === 'ArrowLeft') navigateFullscreen(-1);
+            if (e.key === 'ArrowRight') navigateFullscreen(1);
+        });
+
+        // Close fullscreen on background click
+        document.getElementById('fullscreenModal').addEventListener('click', (e) => {
+            if (e.target.id === 'fullscreenModal') closeFullscreen();
+        });
+
+        function startAutoSlide(name) {
+            carousels[name].interval = setInterval(() => {
+                moveCarousel(name, 1);
+            }, 3000);
+        }
+
+        function stopAutoSlide(name) {
+            if (carousels[name].interval) {
+                clearInterval(carousels[name].interval);
+            }
+        }
+
+        function moveCarousel(name, direction) {
+            const carousel = carousels[name];
+            carousel.currentSlide = (carousel.currentSlide + direction + carousel.totalSlides) % carousel.totalSlides;
+            updateCarousel(name);
+        }
+
+        function goToSlide(name, index) {
+            stopAutoSlide(name);
+            carousels[name].currentSlide = index;
+            updateCarousel(name);
+            startAutoSlide(name);
+        }
+
+        function updateCarousel(name) {
+            const carousel = carousels[name];
+            const container = document.querySelector(`[data-carousel="${name}"] .carousel-slides`);
+            const dots = document.querySelectorAll(`#dots-${name} .carousel-dot`);
+            
+            container.style.transform = `translateX(-${carousel.currentSlide * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === carousel.currentSlide);
+            });
+        }
+
+        // Pause auto-slide on hover
+        document.querySelectorAll('.carousel-container').forEach(container => {
+            const carouselName = container.closest('[data-carousel]').getAttribute('data-carousel');
+            container.addEventListener('mouseenter', () => stopAutoSlide(carouselName));
+            container.addEventListener('mouseleave', () => startAutoSlide(carouselName));
+        });
+
+        initCarousel('inventory', 9);
+        initCarousel('ravi', 9);
+        initCarousel('rmgarage', 6);
+        initCarousel('obs', 4);
+    </script>
 </body>
 </html>
