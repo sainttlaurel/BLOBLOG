@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@miguelpilapil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,331 +13,386 @@
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: #000;
-            color: #fff;
+            font-family: 'Courier Prime', monospace;
+            background: #fff;
+            color: #000;
             overflow-x: hidden;
         }
 
-        /* Navbar */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             right: 0;
             padding: 30px 40px;
             display: flex;
-            gap: 30px;
             z-index: 100;
+            border-left: 2px solid #000;
+            border-bottom: 2px solid #000;
+            background: #fff;
         }
 
         nav a {
-            color: #fff;
+            color: #000;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 300;
-            transition: opacity 0.3s;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            transition: all 0.2s;
+        }
+
+        nav a + a {
+            border-left: 2px solid #000;
         }
 
         nav a:hover {
-            opacity: 0.6;
+            background: #000;
+            color: #fff;
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            border-bottom: 4px solid #000;
         }
 
         .hero-content {
             text-align: left;
-        }
-
-        .username {
-            font-size: 14px;
-            font-weight: 300;
-            margin-bottom: 20px;
-            color: #999;
-        }
-
-        .hero-title {
-            font-size: clamp(60px, 12vw, 180px);
-            font-weight: 900;
-            line-height: 0.9;
-            letter-spacing: -0.02em;
-        }
-
-        .tagline {
-            font-size: 18px;
-            font-weight: 300;
-            margin-top: 30px;
-            color: #999;
-        }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
-            writing-mode: vertical-rl;
-            font-size: 12px;
-            font-weight: 300;
-            color: #666;
-        }
-
-        /* Projects Section */
-        .projects {
-            min-height: 100vh;
-            padding: 100px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 300;
-            color: #666;
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-align: center;
-        }
-
-        .project-grid {
-            display: grid;
-            gap: 80px;
             max-width: 1200px;
+            padding: 0 40px;
             width: 100%;
         }
 
-        .project-item {
-            border-top: 1px solid #222;
-            padding-top: 40px;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-
-        .project-item:hover {
-            opacity: 0.7;
-        }
-
-        .project-date {
+        .username {
+            font-family: 'Courier Prime', monospace;
             font-size: 12px;
-            color: #666;
-            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: #555;
         }
 
-        .project-title {
-            font-size: clamp(32px, 5vw, 64px);
+        .hero-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(40px, 8vw, 100px);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: #000;
+        }
+
+        .tagline {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            font-weight: 400;
+            margin-top: 30px;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            right: 50px;
+            writing-mode: vertical-rl;
+            font-size: 11px;
             font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.1;
+            letter-spacing: 3px;
+            color: #000;
+        }
+
+        /* Blog Section */
+        .blog {
+            padding: 80px 40px 100px;
+            border-bottom: 4px solid #000;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .blog-grid {
+            display: grid;
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .blog-card {
+            border: 2px solid #000;
+            padding: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: -2px;
+        }
+
+        .blog-card:hover {
+            background: #000;
             color: #fff;
         }
 
-        .project-desc {
-            font-size: 16px;
-            font-weight: 300;
-            color: #999;
+        .blog-card:hover .blog-card-date,
+        .blog-card:hover .blog-card-excerpt {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .blog-card-date {
+            font-family: 'Courier Prime', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #555;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .blog-card-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(18px, 2.5vw, 28px);
+            margin-bottom: 16px;
+            line-height: 1.1;
+            color: inherit;
+            letter-spacing: -0.01em;
+        }
+
+        .blog-card-excerpt {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            font-weight: 400;
+            color: #555;
             max-width: 700px;
             line-height: 1.6;
+            transition: color 0.2s;
+        }
+
+        /* Post Detail View */
+        .post-detail {
+            display: none;
+        }
+
+        .post-detail.active {
+            display: block;
+        }
+
+        .post-list {
+            display: block;
+        }
+
+        .post-list.hidden {
+            display: none;
+        }
+
+        .post-detail-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 40px 100px;
+        }
+
+        .post-detail-header {
+            margin-bottom: 40px;
+        }
+
+        .post-back {
+            font-family: 'Courier Prime', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 2px solid #000;
+            padding: 10px 20px;
+            cursor: pointer;
+            background: none;
+            color: #000;
+            transition: all 0.2s;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
+        .post-back:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .post-detail-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(22px, 3.5vw, 36px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-top: 4px solid #000;
+        }
+
+        .post-detail-body {
+            font-family: 'Courier Prime', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #000;
+        }
+
+        .post-detail-body p {
             margin-bottom: 20px;
         }
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
+        .post-detail-body h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 17px;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
         }
 
-        .tag {
+        .post-detail-body hr {
+            border: none;
+            border-top: 2px solid #000;
+            margin: 40px 0;
+        }
+
+        .post-detail-body em {
+            font-style: italic;
+        }
+
+        .post-detail-footer {
+            border-top: 2px solid #000;
+            padding-top: 30px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .post-end-label {
             font-size: 11px;
-            font-weight: 300;
-            color: #666;
-            padding: 5px 12px;
-            border: 1px solid #222;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #555;
         }
 
         /* Contact Section */
         .contact {
-            min-height: 60vh;
-            padding: 100px 40px;
-            border-top: 1px solid #222;
+            padding: 80px 40px;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            text-align: center;
+            justify-content: center;
+            border-bottom: 4px solid #000;
+            gap: 40px;
+            flex-wrap: wrap;
         }
 
         .contact-title {
-            font-size: clamp(32px, 6vw, 80px);
-            font-weight: 700;
-            margin-bottom: 40px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(18px, 2.5vw, 24px);
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .contact-links {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
         }
 
         .contact-links a {
-            font-size: clamp(18px, 3vw, 32px);
-            color: #fff;
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: #000;
             text-decoration: none;
-            font-weight: 300;
-            transition: opacity 0.3s;
-            width: fit-content;
+            font-weight: 700;
+            padding: 10px 24px;
+            border: 2px solid #000;
+            transition: all 0.2s;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact-links a + a {
+            border-left: none;
         }
 
         .contact-links a:hover {
-            opacity: 0.6;
+            background: #000;
+            color: #fff;
         }
 
-        /* Background Effect */
+        /* Footer */
+        .footer {
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .footer-motto {
+            color: #555;
+        }
+
+        /* Background Text */
         .bg-text {
             position: fixed;
+            font-family: 'Archivo Black', sans-serif;
             font-size: 40vw;
             font-weight: 900;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.03);
+            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.04);
             pointer-events: none;
             z-index: -1;
+            line-height: 1;
         }
 
         .bg-text.left {
-            top: 10%;
-            left: -10%;
+            top: 5%;
+            left: -5%;
         }
 
         .bg-text.right {
-            bottom: 10%;
-            right: -10%;
-        }
-
-        /* Image Gallery Modal */
-        .gallery-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.98);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            padding: 40px;
-        }
-
-        .gallery-modal.active {
-            display: flex;
-        }
-
-        .gallery-content {
-            max-width: 90%;
-            max-height: 90%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .gallery-main-image {
-            max-width: 100%;
-            max-height: 70vh;
-            object-fit: contain;
-            margin-bottom: 30px;
-        }
-
-        .gallery-thumbnails {
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            padding: 10px;
-            max-width: 100%;
-        }
-
-        .gallery-thumbnail {
-            width: 120px;
-            height: 80px;
-            object-fit: cover;
-            cursor: pointer;
-            opacity: 0.5;
-            transition: opacity 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .gallery-thumbnail:hover,
-        .gallery-thumbnail.active {
-            opacity: 1;
-            border-color: #fff;
-        }
-
-        .gallery-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #fff;
-            font-size: 50px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.3s;
-        }
-
-        .gallery-close:hover {
-            opacity: 0.6;
-        }
-
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 60px;
-            cursor: pointer;
-            transition: opacity 0.3s;
-            padding: 20px;
-        }
-
-        .gallery-nav:hover {
-            opacity: 0.6;
-        }
-
-        .gallery-nav.prev {
-            left: 20px;
-        }
-
-        .gallery-nav.next {
-            right: 20px;
-        }
-
-        .gallery-counter {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #999;
-            font-size: 14px;
+            bottom: 5%;
+            right: -5%;
         }
 
         @media (max-width: 768px) {
             nav {
-                padding: 20px;
+                padding: 15px 20px;
+                border-left: none;
+                border-bottom: 2px solid #000;
+                right: 0;
+                left: auto;
             }
 
-            .projects, .contact {
+            nav a {
+                font-size: 10px;
+                padding: 6px 12px;
+            }
+
+            .hero-content {
+                padding: 0 20px;
+            }
+
+            .blog, .contact {
+                padding: 60px 20px;
+            }
+
+            .blog-card {
+                padding: 24px;
+            }
+
+            .post-detail-inner {
                 padding: 60px 20px;
             }
 
@@ -345,22 +400,23 @@
                 display: none;
             }
 
-            .gallery-thumbnail {
-                width: 80px;
-                height: 60px;
+            .footer {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
     <!-- Background Text -->
-    <div class="bg-text left">BLACK</div>
-    <div class="bg-text right">SOUL</div>
+    <div class="bg-text left">WRITE</div>
+    <div class="bg-text right">SHIP</div>
 
     <!-- Navigation -->
     <nav>
-        <a href="#projects">work</a>
-        <a href="#contact">contact</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
     </nav>
 
     <!-- Hero Section -->
@@ -368,163 +424,33 @@
         <div class="hero-content">
             <div class="username">@miguelpilapil</div>
             <h1 class="hero-title">full-stack dev<br>who codes<br>until 3am</h1>
-            <p class="tagline">building digital experiences • coffee & chaos ☕</p>
+            <p class="tagline">building digital experiences · coffee & chaos ☕</p>
         </div>
-        <div class="scroll-indicator">scroll down</div>
+        <div class="scroll-indicator">SCROLL</div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="section-label">selected work</div>
-        <div class="project-grid">
-            
-            <!-- BYBOT - New Project -->
-            <article class="project-item" data-github="https://github.com/sainttlaurel/BYBOT">
-                <div class="project-date">2026</div>
-                <h3 class="project-title">BYBOT — AI Assistant Bot</h3>
-                <p class="project-desc">
-                    AI-powered bot system with automated responses and intelligent interactions. 
-                    Built to streamline communication and automate repetitive tasks.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">AI/ML</span>
-                    <span class="tag">Automation</span>
-                    <span class="tag">Bot</span>
-                </div>
-            </article>
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="section-label">latest writings</div>
 
-            <!-- HRVD Garage - New Project -->
-            <article class="project-item" data-images="HRVD CAR TRADING" data-github="https://github.com/sainttlaurel/HRVDGARAGE">
-                <div class="project-date">2026</div>
-                <h3 class="project-title">HRVD Garage — Auto Management System</h3>
-                <p class="project-desc">
-                    Comprehensive automotive garage management platform with service tracking, 
-                    inventory management, and customer relationship tools.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Full-Stack</span>
-                    <span class="tag">Database</span>
-                    <span class="tag">Management</span>
-                    <span class="tag">CRM</span>
-                </div>
-            </article>
+        <!-- Post List View -->
+        <div class="post-list" id="postList">
+            <div class="blog-grid" id="blogGrid"></div>
+        </div>
 
-            <!-- Payatas Ledger -->
-            <article class="project-item" data-images="brgyorgPH">
-                <div class="project-date">April 2026</div>
-                <h3 class="project-title">Payatas Ledger — Civic Management System</h3>
-                <p class="project-desc">
-                    Civic management system designed for Barangay Payatas, Quezon City. 
-                    Includes resident management, document requests, complaints tracking, 
-                    project monitoring, announcements, reports, and user management with 
-                    role-based access. Built to digitize barangay operations and reduce paperwork.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">HTML5</span>
-                    <span class="tag">CSS3</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Supabase</span>
+        <!-- Post Detail View -->
+        <div class="post-detail" id="postDetail">
+            <div class="post-detail-inner">
+                <button class="post-back" id="postBack">← BACK TO BLOG</button>
+                <div class="post-detail-header">
+                    <h1 class="post-detail-title" id="postDetailTitle"></h1>
                 </div>
-            </article>
-
-            <!-- Dropler -->
-            <article class="project-item" data-images="dropler" data-url="https://dropler.vercel.app">
-                <div class="project-date">March 2026</div>
-                <h3 class="project-title">Dropler — Dropshipping Hub</h3>
-                <p class="project-desc">
-                    Full-stack dropshipping platform with dashboard, billing system, and plan management. 
-                    New accounts start on a free plan — no credit card required. Users can upgrade to paid 
-                    plans when they need more products and orders.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Next.js</span>
-                    <span class="tag">React</span>
-                    <span class="tag">Tailwind</span>
-                    <span class="tag">SaaS</span>
+                <div class="post-detail-body" id="postDetailBody"></div>
+                <div class="post-detail-footer">
+                    <span class="post-end-label">END OF ARTICLE</span>
+                    <button class="post-back" id="postBackBottom">MORE ARTICLES →</button>
                 </div>
-            </article>
-
-            <!-- Blockfolio -->
-            <article class="project-item" data-github="https://github.com/sainttlaurel/BLOCKFOLIO">
-                <div class="project-date">March 2026</div>
-                <h3 class="project-title">Blockfolio</h3>
-                <p class="project-desc">
-                    Crypto dashboard turned professional trading platform. Real-time data, smooth UI, 
-                    and some dev magic. Built with React because why not.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">React</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Real-time APIs</span>
-                    <span class="tag">WebSockets</span>
-                </div>
-            </article>
-
-            <!-- AI-Powered Inventory -->
-            <article class="project-item" data-images="aipoweredinventory" data-github="https://github.com/sainttlaurel/AI-POWERED-INVENTORY">
-                <div class="project-date">March 2026</div>
-                <h3 class="project-title">AI-Powered Inventory Management</h3>
-                <p class="project-desc">
-                    Inventory system with AI-powered forecasting and analytics. 
-                    Has a chatbot that probably knows more about your stock than you do.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">React</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">AI</span>
-                    <span class="tag">Analytics</span>
-                </div>
-            </article>
-
-            <!-- RAVI Resort -->
-            <article class="project-item" data-images="ravi">
-                <div class="project-date">2026</div>
-                <h3 class="project-title">RAVI — Resort Booking System</h3>
-                <p class="project-desc">
-                    Resort management and booking platform. Features booking system, gallery, 
-                    admin dashboard, and customer management. Built for streamlined resort operations.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">PHP</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Bootstrap</span>
-                </div>
-            </article>
-
-            <!-- OBS Banking -->
-            <article class="project-item" data-images="obs">
-                <div class="project-date">2026</div>
-                <h3 class="project-title">OBS — Online Banking System</h3>
-                <p class="project-desc">
-                    Secure online banking platform with transfer functionality, transaction history, 
-                    and dashboard analytics. Built with security and user experience in mind.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">PHP</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">Security</span>
-                    <span class="tag">Banking</span>
-                </div>
-            </article>
-
-            <!-- RM Garage -->
-            <article class="project-item" data-images="rmgarage">
-                <div class="project-date">2026</div>
-                <h3 class="project-title">RM Garage — Auto Service Management</h3>
-                <p class="project-desc">
-                    Automotive service management system with appointment scheduling, 
-                    service tracking, and customer database. Built for modern garage operations.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">PHP</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">CRM</span>
-                </div>
-            </article>
-
+            </div>
         </div>
     </section>
 
@@ -534,137 +460,194 @@
         <div class="contact-links">
             <a href="mailto:miguelpilapil30@gmail.com">Email</a>
             <a href="https://github.com/sainttlaurel" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/miguelpilapil/" target="_blank">LinkedIn</a>
             <a href="https://www.instagram.com/saintlaureeel/" target="_blank">Instagram</a>
             <a href="https://discord.com/users/1126919985902661683" target="_blank">Discord</a>
         </div>
     </section>
 
-    <!-- Image Gallery Modal -->
-    <div class="gallery-modal" id="galleryModal">
-        <button class="gallery-close" onclick="closeGallery()">×</button>
-        <button class="gallery-nav prev" onclick="navigateGallery(-1)">‹</button>
-        <div class="gallery-content">
-            <img id="galleryMainImage" class="gallery-main-image" src="" alt="Project screenshot">
-            <div class="gallery-thumbnails" id="galleryThumbnails"></div>
-        </div>
-        <button class="gallery-nav next" onclick="navigateGallery(1)">›</button>
-        <div class="gallery-counter" id="galleryCounter"></div>
+    <!-- Footer -->
+    <div class="footer">
+        <span class="footer-motto">NO COOKIES. NO TRACKING. JUST CODE.</span>
+        <span>© 2026</span>
     </div>
 
     <script>
-        // Project image mappings
-        const projectImages = {
-            'HRVD CAR TRADING': [
-                '1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png'
-            ],
-            'brgyorgPH': [
-                'login.png', 'dashboard.png', 'residents.png', 'documents.png',
-                'complaints.png', 'projects.png', 'annoucements.png', 'reports.png'
-            ],
-            'dropler': [
-                'analytics.png', 'appearance.png', 'categories.png', 'dashboard.png',
-                'order log.png', 'product.png', 'product1.png', 'product2.png',
-                'settings.png', 'suppliers.png', 'support.png', 'frontstore1.png',
-                'frontstore2.png', 'frontstore_categories.png', 'frontstore_support.png'
-            ],
-            'aipoweredinventory': [
-                'dashboard.png', 'products.png', 'inventory.png', 'categories.png',
-                'aiforecast.png', 'invoices.png', 'reports.png', 'notifications.png', 'adminpage.png'
-            ],
-            'ravi': [
-                'login.png', 'dashboard.png', 'about1.png', 'about2.png',
-                'about3.png', 'booknow.png', 'gallery.png', 'contactus.png', 'adminpage.png'
-            ],
-            'obs': [
-                'login.png', 'dashboard.png', 'transfermoney.png', 'transferhistory.png'
-            ],
-            'rmgarage': [
-                'loading.png', 'dashboardblack.png', 'dashboardwhite.png',
-                'fleet.png', 'reviews.png', 'contactus.png'
-            ]
-        };
+        const posts = [
+            {
+                id: 1,
+                title: "Building BYBOT: What I Learned Automating My Own Chaos",
+                date: "July 2026",
+                excerpt: "I didn't set out to build an AI bot. I set out to stop answering the same three questions every single day.",
+                body: `I didn't set out to build an AI bot. I set out to stop answering the same three questions every single day.
 
-        let currentGallery = {
-            images: [],
-            currentIndex: 0
-        };
+That's usually how my projects start — not with a grand plan, but with me getting tired of doing something manually at 1am and thinking, "this should just... happen on its own."
 
-        // Add click handlers to all project items
-        document.querySelectorAll('.project-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const imageFolder = this.dataset.images;
-                const githubUrl = this.dataset.github;
-                const projectUrl = this.dataset.url;
+<h2>The problem</h2>
 
-                // Priority: 1. Show images if available, 2. Go to project URL, 3. Go to GitHub
-                if (imageFolder && projectImages[imageFolder]) {
-                    openGallery(imageFolder);
-                } else if (projectUrl) {
-                    window.open(projectUrl, '_blank');
-                } else if (githubUrl) {
-                    window.open(githubUrl, '_blank');
-                }
-            });
-        });
+Repetitive tasks were eating my day in small, invisible bites. Same messages, same responses, same manual follow-ups. None of it was hard. All of it was death by a thousand cuts. I needed something that could sit in the background, understand what was being asked, and respond intelligently — without me babysitting it.
 
-        function openGallery(folder) {
-            const images = projectImages[folder];
-            currentGallery.images = images.map(img => `images/${folder}/${img}`);
-            currentGallery.currentIndex = 0;
+Enter BYBOT: an AI-powered bot system built to automate responses and handle repetitive interactions so I could actually focus on building instead of replying.
 
-            displayGallery();
-            document.getElementById('galleryModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+<h2>Why Python</h2>
 
-        function displayGallery() {
-            const mainImage = document.getElementById('galleryMainImage');
-            const thumbnails = document.getElementById('galleryThumbnails');
-            const counter = document.getElementById('galleryCounter');
+For anything touching AI/ML and automation, Python is still my default. The ecosystem is mature, the libraries are forgiving, and I can go from "idea" to "working prototype" without fighting the language itself. When you're building solo and moving fast, that matters more than people give it credit for.
 
-            mainImage.src = currentGallery.images[currentGallery.currentIndex];
-            counter.textContent = `${currentGallery.currentIndex + 1} / ${currentGallery.images.length}`;
+The architecture is intentionally simple:
+- A listener layer that catches incoming triggers
+- A processing layer that figures out intent
+- A response layer that handles the automated reply or hands off to a human when it's out of its depth
 
-            // Clear and rebuild thumbnails
-            thumbnails.innerHTML = '';
-            currentGallery.images.forEach((src, index) => {
-                const thumb = document.createElement('img');
-                thumb.src = src;
-                thumb.className = 'gallery-thumbnail' + (index === currentGallery.currentIndex ? ' active' : '');
-                thumb.onclick = () => {
-                    currentGallery.currentIndex = index;
-                    displayGallery();
-                };
-                thumbnails.appendChild(thumb);
-            });
-        }
+Nothing fancy. Fancy breaks. Simple survives 3am debugging sessions.
 
-        function navigateGallery(direction) {
-            currentGallery.currentIndex = (currentGallery.currentIndex + direction + currentGallery.images.length) % currentGallery.images.length;
-            displayGallery();
-        }
+<h2>The part that broke spectacularly</h2>
 
-        function closeGallery() {
-            document.getElementById('galleryModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+Automated systems are great right up until they automate the wrong thing. Early on, BYBOT was a little too eager to respond — it would fire off replies to things that needed a human touch, or misread context and answer the wrong question entirely.
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (document.getElementById('galleryModal').classList.contains('active')) {
-                if (e.key === 'Escape') closeGallery();
-                if (e.key === 'ArrowLeft') navigateGallery(-1);
-                if (e.key === 'ArrowRight') navigateGallery(1);
+The fix wasn't more AI. It was less confidence. I added a threshold: if the bot wasn't reasonably sure what was being asked, it would flag it instead of guessing. Better to say "let me get back to you" than to confidently say the wrong thing.
+
+That's a lesson that shows up in every automation project, not just this one — the goal isn't to remove humans from the loop, it's to remove humans from the <em>boring parts</em> of the loop.
+
+<h2>Automate the boring stuff so you can code the fun stuff</h2>
+
+That's really the whole philosophy behind BYBOT, and honestly behind most of what I build. I'm one person juggling client work, side projects, and whatever's currently on fire. If a bot can take repetitive communication off my plate, that's hours back for actual engineering — the kind of work that doesn't run on autopilot and shouldn't.
+
+BYBOT isn't trying to be clever. It's trying to buy me time. So far, it's working.
+
+<hr>
+
+<em>Built with Python, deployed as part of an ongoing automation stack. More write-ups on the AI/ML side coming soon.</em>`
+            },
+            {
+                id: 2,
+                title: "Coffee, Chaos, and Commits: A Week in the Life of a Solo Full-Stack Dev",
+                date: "June 2026",
+                excerpt: "My bio says \"codes until 3am.\" People assume that's a joke. It's not — it's a scheduling decision.",
+                body: `My bio says "codes until 3am." People assume that's a joke. It's not — it's a scheduling decision.
+
+Here's what an actual week looks like when you're one person building banking systems, resort platforms, AI bots, and a crypto dashboard at the same time.
+
+<h2>Monday: Context switching is the real skill</h2>
+
+Nobody talks about this enough — the hardest part of full-stack work isn't React or PHP or Supabase. It's switching between four completely different mental models in the same day.
+
+Morning: I'm deep in Payatas Ledger, thinking about role-based access for barangay staff. By afternoon I'm in Dropler's billing logic, thinking about what happens when a free-plan user tries to sneak past their limits. By evening I'm back in OBS, double-checking transaction security because it's a banking system and there is zero room for "close enough."
+
+Every project has its own rules. The skill isn't knowing all the stacks — it's not bleeding one project's assumptions into another.
+
+<h2>Tuesday: The 3am window is real, and it's not about hustle</h2>
+
+I'm not coding at 3am because I think it's impressive. I'm coding at 3am because that's when the notifications stop, the client Slack goes quiet, and nobody needs anything from me. It's the one stretch of the day where a bug and I can just sit with each other until it makes sense.
+
+That's when RAVI's booking calendar logic finally clicked. That's when I found the query that was silently slowing down HRVD Garage's inventory lookups. Late nights aren't a grind flex — they're just honest silence.
+
+<h2>Wednesday: Old stack, new stack, whatever the job needs</h2>
+
+Some of my projects run on Next.js and Tailwind. Others run on plain PHP and MySQL. I don't have a religion about it. RM Garage, OBS, and RAVI are all PHP/MySQL, and they work exactly as well as they need to. Nobody's inventory system needs a JavaScript framework to track oil changes.
+
+Picking tools based on what the project needs — not what looks good on a portfolio — is a quietly underrated skill. It also means I ship faster, because I'm not relearning a stack mid-project just to keep up appearances.
+
+<h2>Thursday: Debugging is 90% narrowing, 10% fixing</h2>
+
+Most of my actual "coding" time isn't writing new code. It's narrowing down where things went wrong. Was it the query? The API response? A state update that fired before the data was ready? By the time I find the actual bug, the fix is usually three lines. Getting there is the whole job.
+
+<h2>Friday: Ship something, even if it's small</h2>
+
+I try to end every week having shipped <em>something</em> — a feature, a fix, a cleaner UI pass. It doesn't have to be big. Momentum matters more than magnitude. A week where nothing moved forward is a week I have to catch up on later, and I'd rather not.
+
+<h2>The environment, honestly</h2>
+
+There's no team standup, no Jira board, no manager checking in. It's me, a stack of projects at different stages, and a self-imposed deadline for each one. That sounds chaotic because it is — but it's chaos I've built a rhythm around. Coffee in the morning, quiet in the evening, and a commit history that doesn't lie about how the week actually went.
+
+That's the job. Chaos, managed.`
+            },
+            {
+                id: 3,
+                title: "From Barangay Paperwork to Web App: Building Payatas Ledger",
+                date: "May 2026",
+                excerpt: "Most of my projects start because I got tired of doing something manually. Payatas Ledger started because I watched other people get tired of doing something manually.",
+                body: `Most of my projects start because I got tired of doing something manually. Payatas Ledger started because I watched other people get tired of doing something manually — and theirs involved actual paper, actual queues, and actual government stamps.
+
+<h2>The problem wasn't technical, it was operational</h2>
+
+Payatas Ledger is a civic management system built for Barangay Payatas in Quezon City. Before it, day-to-day barangay operations ran on the stuff local government has run on forever: paper logs, in-person requests, manual tracking of complaints and projects. It works, technically. It's just slow, easy to lose track of, and hard on both staff and residents.
+
+The brief was straightforward on paper and genuinely hard in practice: digitize resident management, document requests, complaints tracking, project monitoring, and announcements — all with proper role-based access, because not everyone should be able to see or touch everything.
+
+<h2>Why Supabase</h2>
+
+For a project like this, I wanted a backend that handled auth and role-based access without me hand-rolling a permissions system from scratch. Supabase gave me that — real-time database, built-in auth, and row-level security policies that map cleanly onto "barangay staff can do X, residents can do Y, admins can do Z."
+
+The stack stayed intentionally lean: HTML5, CSS3, and JavaScript on the front end, Supabase doing the heavy lifting on the back. No framework overhead for a system that needed to be fast, reliable, and maintainable by people who aren't going to be deep in a JS ecosystem long-term.
+
+<h2>The hard part wasn't the code</h2>
+
+Building a login system and a database table for complaints — that part's normal full-stack work. The actually hard part was designing for people who didn't ask for a digital system and aren't necessarily comfortable with one.
+
+Barangay staff needed something that didn't feel like a leap from the paper process they already understood. Residents requesting documents needed a flow simple enough that "how do I even use this" wasn't the first question. Every screen had to answer "what do I do next" without a manual.
+
+That meant:
+- Plain-language labels instead of technical ones (no "submit ticket," just "file a complaint")
+- Status tracking that mirrors how people already think about requests — "pending," "in review," "released" — not developer jargon
+- Role-based views that hide complexity instead of just restricting access, so staff aren't staring at features they'll never touch
+
+<h2>Digitizing without disconnecting</h2>
+
+The goal was never to make Payatas operations feel like a tech startup. It was to take a process people already understood and remove the friction — the lost forms, the repeat trips, the "come back tomorrow." Reports, announcements, and project monitoring all live in one place now, with an audit trail that paper never gave anyone.
+
+<h2>What this project taught me</h2>
+
+Building for people who aren't tech-savvy is a different discipline than building for developers or power users. You can't lean on clever UI patterns or assume familiarity with anything. Every choice has to answer one question honestly: does this make someone's day easier, or does it just make the system look more impressive?
+
+Payatas Ledger isn't the flashiest thing in my portfolio. It's one of the ones I'm proudest of, because the people using it aren't measuring it by design trends — they're measuring it by whether the line at the barangay hall got shorter.`
             }
-        });
+        ];
 
-        // Close on background click
-        document.getElementById('galleryModal').addEventListener('click', (e) => {
-            if (e.target.id === 'galleryModal') closeGallery();
-        });
+        const blogGrid = document.getElementById('blogGrid');
+        const postList = document.getElementById('postList');
+        const postDetail = document.getElementById('postDetail');
+        const postDetailTitle = document.getElementById('postDetailTitle');
+        const postDetailBody = document.getElementById('postDetailBody');
+
+        function renderPosts() {
+            blogGrid.innerHTML = posts.map(post => `
+                <article class="blog-card" data-id="${post.id}">
+                    <div class="blog-card-date">${post.date}</div>
+                    <h3 class="blog-card-title">${post.title}</h3>
+                    <p class="blog-card-excerpt">${post.excerpt}</p>
+                </article>
+            `).join('');
+
+            document.querySelectorAll('.blog-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const id = parseInt(card.dataset.id);
+                    openPost(id);
+                });
+            });
+        }
+
+        function openPost(id) {
+            const post = posts.find(p => p.id === id);
+            if (!post) return;
+
+            postDetailTitle.textContent = post.title;
+            postDetailBody.innerHTML = post.body;
+
+            postList.classList.add('hidden');
+            postDetail.classList.add('active');
+
+            window.scrollTo({ top: document.getElementById('blog').offsetTop - 20, behavior: 'smooth' });
+        }
+
+        function closePost() {
+            postDetail.classList.remove('active');
+            postList.classList.remove('hidden');
+            window.scrollTo({ top: document.getElementById('blog').offsetTop - 20, behavior: 'smooth' });
+        }
+
+        document.getElementById('postBack').addEventListener('click', closePost);
+        document.getElementById('postBackBottom').addEventListener('click', closePost);
+
+        renderPosts();
     </script>
 
 </body>
