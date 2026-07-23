@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@miguelpilapil</title>
+    <title>@miguelpilapil — full-stack dev who codes until 3am</title>
+    <meta name="description" content="Full-stack developer building digital experiences. Blog about coding, AI, and the chaos of solo development.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://bloblog.vercel.app">
+    <meta property="og:title" content="@miguelpilapil — full-stack dev who codes until 3am">
+    <meta property="og:description" content="Full-stack developer building digital experiences. Blog about coding, AI, and the chaos of solo development.">
+    <meta property="og:url" content="https://bloblog.vercel.app">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@miguelpilapil — full-stack dev who codes until 3am">
+    <meta name="twitter:description" content="Full-stack developer building digital experiences. Blog about coding, AI, and the chaos of solo development.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23000'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-family='monospace' font-weight='bold' font-size='18'>B</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         * {
@@ -12,14 +23,69 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Courier Prime', monospace;
-            background: #fff;
-            color: #000;
-            overflow-x: hidden;
+        :root {
+            --bg: #fff;
+            --fg: #000;
+            --muted: #555;
+            --border: #000;
+            --card-hover-bg: #000;
+            --card-hover-fg: #fff;
+            --muted-hover: rgba(255,255,255,0.7);
+            --icon-filter: none;
         }
 
-        /* Navigation */
+        .dark {
+            --bg: #000;
+            --fg: #fff;
+            --muted: #999;
+            --border: #fff;
+            --card-hover-bg: #fff;
+            --card-hover-fg: #000;
+            --muted-hover: rgba(0,0,0,0.7);
+            --icon-filter: invert(1);
+        }
+
+        body {
+            font-family: 'Courier Prime', monospace;
+            background: var(--bg);
+            color: var(--fg);
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--fg);
+            outline-offset: 2px;
+        }
+
+        ::selection {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 30px;
+            left: 40px;
+            z-index: 100;
+            background: var(--bg);
+            border: 2px solid var(--border);
+            color: var(--fg);
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 18px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--card-hover-bg);
+            color: var(--card-hover-fg);
+        }
+
         nav {
             position: fixed;
             top: 0;
@@ -27,13 +93,14 @@
             padding: 30px 40px;
             display: flex;
             z-index: 100;
-            border-left: 2px solid #000;
-            border-bottom: 2px solid #000;
-            background: #fff;
+            border-left: 2px solid var(--border);
+            border-bottom: 2px solid var(--border);
+            background: var(--bg);
+            transition: background 0.3s;
         }
 
         nav a {
-            color: #000;
+            color: var(--fg);
             text-decoration: none;
             font-size: 12px;
             font-weight: 700;
@@ -44,22 +111,21 @@
         }
 
         nav a + a {
-            border-left: 2px solid #000;
+            border-left: 2px solid var(--border);
         }
 
         nav a:hover {
-            background: #000;
-            color: #fff;
+            background: var(--card-hover-bg);
+            color: var(--card-hover-fg);
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            border-bottom: 4px solid #000;
+            border-bottom: 4px solid var(--border);
         }
 
         .hero-content {
@@ -75,7 +141,7 @@
             font-weight: 700;
             letter-spacing: 3px;
             margin-bottom: 20px;
-            color: #555;
+            color: var(--muted);
         }
 
         .hero-title {
@@ -84,7 +150,7 @@
             line-height: 0.9;
             letter-spacing: -0.02em;
             text-transform: uppercase;
-            color: #000;
+            color: var(--fg);
         }
 
         .tagline {
@@ -92,7 +158,7 @@
             font-size: 12px;
             font-weight: 400;
             margin-top: 30px;
-            color: #555;
+            color: var(--muted);
             letter-spacing: 1px;
         }
 
@@ -104,13 +170,12 @@
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 3px;
-            color: #000;
+            color: var(--fg);
         }
 
-        /* Blog Section */
         .blog {
             padding: 80px 40px 100px;
-            border-bottom: 4px solid #000;
+            border-bottom: 4px solid var(--border);
         }
 
         .section-label {
@@ -118,7 +183,7 @@
             font-weight: 700;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: #555;
+            color: var(--muted);
             margin-bottom: 60px;
             text-align: center;
         }
@@ -132,7 +197,7 @@
         }
 
         .blog-card {
-            border: 2px solid #000;
+            border: 2px solid var(--border);
             padding: 40px;
             cursor: pointer;
             transition: all 0.2s;
@@ -140,13 +205,13 @@
         }
 
         .blog-card:hover {
-            background: #000;
-            color: #fff;
+            background: var(--card-hover-bg);
+            color: var(--card-hover-fg);
         }
 
         .blog-card:hover .blog-card-date,
         .blog-card:hover .blog-card-excerpt {
-            color: rgba(255,255,255,0.7);
+            color: var(--muted-hover);
         }
 
         .blog-card-date {
@@ -154,7 +219,7 @@
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 2px;
-            color: #555;
+            color: var(--muted);
             margin-bottom: 10px;
             transition: color 0.2s;
         }
@@ -172,15 +237,15 @@
             font-family: 'Courier Prime', monospace;
             font-size: 12px;
             font-weight: 400;
-            color: #555;
+            color: var(--muted);
             max-width: 700px;
             line-height: 1.6;
             transition: color 0.2s;
         }
 
-        /* Post Detail View */
         .post-detail {
             display: none;
+            animation: fadeIn 0.25s ease;
         }
 
         .post-detail.active {
@@ -189,10 +254,16 @@
 
         .post-list {
             display: block;
+            animation: fadeIn 0.25s ease;
         }
 
         .post-list.hidden {
             display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .post-detail-inner {
@@ -211,19 +282,19 @@
             font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
-            border: 2px solid #000;
+            border: 2px solid var(--border);
             padding: 10px 20px;
             cursor: pointer;
             background: none;
-            color: #000;
+            color: var(--fg);
             transition: all 0.2s;
             margin-bottom: 40px;
             display: inline-block;
         }
 
         .post-back:hover {
-            background: #000;
-            color: #fff;
+            background: var(--card-hover-bg);
+            color: var(--card-hover-fg);
         }
 
         .post-detail-title {
@@ -233,14 +304,22 @@
             letter-spacing: -0.02em;
             margin-bottom: 20px;
             padding-top: 20px;
-            border-top: 4px solid #000;
+            border-top: 4px solid var(--border);
+        }
+
+        .post-detail-meta {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--muted);
+            margin-bottom: 30px;
         }
 
         .post-detail-body {
             font-family: 'Courier Prime', monospace;
             font-size: 13px;
             line-height: 1.8;
-            color: #000;
+            color: var(--fg);
         }
 
         .post-detail-body p {
@@ -257,7 +336,7 @@
 
         .post-detail-body hr {
             border: none;
-            border-top: 2px solid #000;
+            border-top: 2px solid var(--border);
             margin: 40px 0;
         }
 
@@ -266,28 +345,52 @@
         }
 
         .post-detail-footer {
-            border-top: 2px solid #000;
+            border-top: 2px solid var(--border);
             padding-top: 30px;
             margin-top: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
         .post-end-label {
             font-size: 11px;
             font-weight: 700;
             letter-spacing: 3px;
-            color: #555;
+            color: var(--muted);
         }
 
-        /* Contact Section */
+        .post-share {
+            display: flex;
+            gap: 8px;
+        }
+
+        .post-share a {
+            font-family: 'Courier Prime', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--fg);
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 2px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .post-share a:hover {
+            background: var(--card-hover-bg);
+            color: var(--card-hover-fg);
+        }
+
         .contact {
             padding: 80px 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 4px solid #000;
+            border-bottom: 4px solid var(--border);
             gap: 40px;
             flex-wrap: wrap;
         }
@@ -309,11 +412,11 @@
         .contact-links a {
             font-family: 'Courier Prime', monospace;
             font-size: 12px;
-            color: #000;
+            color: var(--fg);
             text-decoration: none;
             font-weight: 700;
             padding: 10px 24px;
-            border: 2px solid #000;
+            border: 2px solid var(--border);
             transition: all 0.2s;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -324,11 +427,10 @@
         }
 
         .contact-links a:hover {
-            background: #000;
-            color: #fff;
+            background: var(--card-hover-bg);
+            color: var(--card-hover-fg);
         }
 
-        /* Footer */
         .footer {
             padding: 30px 40px;
             display: flex;
@@ -340,17 +442,16 @@
         }
 
         .footer-motto {
-            color: #555;
+            color: var(--muted);
         }
 
-        /* Background Text */
         .bg-text {
             position: fixed;
             font-family: 'Archivo Black', sans-serif;
             font-size: 40vw;
             font-weight: 900;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(0, 0, 0, 0.04);
+            -webkit-text-stroke: 1px rgba(128, 128, 128, 0.06);
             pointer-events: none;
             z-index: -1;
             line-height: 1;
@@ -366,11 +467,43 @@
             right: -5%;
         }
 
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--fg);
+            color: var(--bg);
+            padding: 12px 24px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            transition: all 0.3s;
+            pointer-events: none;
+            z-index: 9999;
+            border: 2px solid var(--border);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
         @media (max-width: 768px) {
+            .theme-toggle {
+                top: 15px;
+                left: 15px;
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+
             nav {
                 padding: 15px 20px;
                 border-left: none;
-                border-bottom: 2px solid #000;
+                border-bottom: 2px solid var(--border);
                 right: 0;
                 left: auto;
             }
@@ -405,21 +538,25 @@
                 gap: 10px;
                 text-align: center;
             }
+
+            .post-detail-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Background Text -->
     <div class="bg-text left">WRITE</div>
     <div class="bg-text right">SHIP</div>
 
-    <!-- Navigation -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">◆</button>
+
     <nav>
         <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <div class="username">@miguelpilapil</div>
@@ -429,32 +566,30 @@
         <div class="scroll-indicator">SCROLL</div>
     </section>
 
-    <!-- Blog Section -->
     <section class="blog" id="blog">
         <div class="section-label">latest writings</div>
 
-        <!-- Post List View -->
         <div class="post-list" id="postList">
             <div class="blog-grid" id="blogGrid"></div>
         </div>
 
-        <!-- Post Detail View -->
         <div class="post-detail" id="postDetail">
             <div class="post-detail-inner">
                 <button class="post-back" id="postBack">← BACK TO BLOG</button>
                 <div class="post-detail-header">
                     <h1 class="post-detail-title" id="postDetailTitle"></h1>
+                    <div class="post-detail-meta" id="postDetailMeta"></div>
                 </div>
                 <div class="post-detail-body" id="postDetailBody"></div>
                 <div class="post-detail-footer">
                     <span class="post-end-label">END OF ARTICLE</span>
+                    <div class="post-share" id="postShare"></div>
                     <button class="post-back" id="postBackBottom">MORE ARTICLES →</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <h2 class="contact-title">Let's work together</h2>
         <div class="contact-links">
@@ -465,16 +600,18 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <div class="footer">
         <span class="footer-motto">NO COOKIES. NO TRACKING. JUST CODE.</span>
         <span>© 2026</span>
     </div>
 
+    <div class="toast" id="toast"></div>
+
     <script>
         const posts = [
             {
                 id: 1,
+                slug: "building-bybot",
                 title: "Building BYBOT: What I Learned Automating My Own Chaos",
                 date: "July 2026",
                 excerpt: "I didn't set out to build an AI bot. I set out to stop answering the same three questions every single day.",
@@ -519,6 +656,7 @@ BYBOT isn't trying to be clever. It's trying to buy me time. So far, it's workin
             },
             {
                 id: 2,
+                slug: "coffee-chaos-commits",
                 title: "Coffee, Chaos, and Commits: A Week in the Life of a Solo Full-Stack Dev",
                 date: "June 2026",
                 excerpt: "My bio says \"codes until 3am.\" People assume that's a joke. It's not — it's a scheduling decision.",
@@ -562,6 +700,7 @@ That's the job. Chaos, managed.`
             },
             {
                 id: 3,
+                slug: "building-payatas-ledger",
                 title: "From Barangay Paperwork to Web App: Building Payatas Ledger",
                 date: "May 2026",
                 excerpt: "Most of my projects start because I got tired of doing something manually. Payatas Ledger started because I watched other people get tired of doing something manually.",
@@ -606,11 +745,27 @@ Payatas Ledger isn't the flashiest thing in my portfolio. It's one of the ones I
         const postList = document.getElementById('postList');
         const postDetail = document.getElementById('postDetail');
         const postDetailTitle = document.getElementById('postDetailTitle');
+        const postDetailMeta = document.getElementById('postDetailMeta');
         const postDetailBody = document.getElementById('postDetailBody');
+        const postShare = document.getElementById('postShare');
+
+        let currentPostSlug = null;
+
+        function getPostUrl(slug) {
+            return `${window.location.origin}${window.location.pathname}?post=${slug}`;
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            clearTimeout(t._hide);
+            t._hide = setTimeout(() => t.classList.remove('show'), 2000);
+        }
 
         function renderPosts() {
             blogGrid.innerHTML = posts.map(post => `
-                <article class="blog-card" data-id="${post.id}">
+                <article class="blog-card" data-slug="${post.slug}">
                     <div class="blog-card-date">${post.date}</div>
                     <h3 class="blog-card-title">${post.title}</h3>
                     <p class="blog-card-excerpt">${post.excerpt}</p>
@@ -619,36 +774,85 @@ Payatas Ledger isn't the flashiest thing in my portfolio. It's one of the ones I
 
             document.querySelectorAll('.blog-card').forEach(card => {
                 card.addEventListener('click', () => {
-                    const id = parseInt(card.dataset.id);
-                    openPost(id);
+                    const slug = card.dataset.slug;
+                    openPost(slug);
                 });
             });
         }
 
-        function openPost(id) {
-            const post = posts.find(p => p.id === id);
+        function openPost(slug) {
+            const post = posts.find(p => p.slug === slug);
             if (!post) return;
 
+            currentPostSlug = slug;
+            history.pushState({ post: slug }, '', `?post=${slug}`);
+
             postDetailTitle.textContent = post.title;
+            postDetailMeta.textContent = post.date;
             postDetailBody.innerHTML = post.body;
+
+            const url = getPostUrl(slug);
+            const text = encodeURIComponent(post.title);
+            postShare.innerHTML = `
+                <a href="https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(url)}" target="_blank" rel="noopener">Twitter</a>
+                <a href="mailto:?subject=${text}&body=${encodeURIComponent(url)}">Email</a>
+                <a href="#" id="copyLink">Copy Link</a>
+            `;
+
+            document.getElementById('copyLink')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigator.clipboard.writeText(url).then(() => showToast('Link copied'));
+            });
 
             postList.classList.add('hidden');
             postDetail.classList.add('active');
 
             window.scrollTo({ top: document.getElementById('blog').offsetTop - 20, behavior: 'smooth' });
+            document.title = `${post.title} — @miguelpilapil`;
         }
 
         function closePost() {
+            currentPostSlug = null;
+            history.pushState({ post: null }, '', window.location.pathname);
             postDetail.classList.remove('active');
             postList.classList.remove('hidden');
+            document.title = '@miguelpilapil — full-stack dev who codes until 3am';
             window.scrollTo({ top: document.getElementById('blog').offsetTop - 20, behavior: 'smooth' });
         }
 
         document.getElementById('postBack').addEventListener('click', closePost);
         document.getElementById('postBackBottom').addEventListener('click', closePost);
 
+        window.addEventListener('popstate', (e) => {
+            if (e.state && e.state.post) {
+                openPost(e.state.post);
+            } else {
+                postDetail.classList.remove('active');
+                postList.classList.remove('hidden');
+                document.title = '@miguelpilapil — full-stack dev who codes until 3am';
+            }
+        });
+
+        const params = new URLSearchParams(window.location.search);
+        const postSlug = params.get('post');
+        if (postSlug && posts.find(p => p.slug === postSlug)) {
+            openPost(postSlug);
+        }
+
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            themeToggle.textContent = '◇';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            themeToggle.textContent = isDark ? '◇' : '◆';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
         renderPosts();
     </script>
-
 </body>
 </html>
